@@ -1,0 +1,18 @@
+<div class="container">
+   <div class="row-fluid">
+      <div class="span12 padding">
+        <%= form_tag("/cost", :method => "PUT") do %>
+        Would you buy or lease a car? <br><br>
+        <label class="radio">
+          <input type="radio" name="user['buy_lease_car']" value="buy" checked>
+          Buy
+        </label>
+        <label class="radio">
+          <input type="radio" name="user['buy_lease_car']" value="lease">
+          Lease
+        </label>
+         <button class="btn btn-inverse" type="submit">Next</button>
+        <%end%>
+      </div>
+   </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="container">
+   <div class="row-fluid">
+      <div class="span12 padding">
+      <%= form_tag("/qualified", :method => "PUT") do %>
+      What kind of a car do you drive now?<br><br>
+      <label class="checkbox">
+        <input type="checkbox" name="user[brands][]" value="Ford">
+        Ford
+      </label >       
+      <label class="checkbox">
+        <input type="checkbox" name="user[brands][]" value="chevrolet">
+        GM (chevrolet)
+      </label>        
+      <label class="checkbox">
+        <input type="checkbox" name="user[brands][]" value="Honda">
+        Honda
+      </label>        
+      <label class="checkbox">
+       <input type="checkbox" name="user[brands][]" value="Nissan">
+        Nissan
+      </label>        
+      <label class="checkbox">
+         <input type="checkbox" name="user[brands][]" value="Toyota">
+       Toyota
+      </label>        
+      <label class="checkbox">
+        <input type="checkbox" name="user[brands][]" value="Kia">
+        Kia
+      </label>        
+      <label class="checkbox">
+        <input type="checkbox" name="user[brands][]" value="Hyundai"> 
+        Hyundai
+      </label>        
+      <label class="checkbox">
+         <input type="checkbox" name="user[brands][]" value="Other">
+        Other
+      </label>        
+       <button class="btn btn-inverse" type="submit">Next</button>
+      <%end%>
+      </div>
+   </div>
+</div>

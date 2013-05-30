@@ -1,0 +1,11 @@
+<div class="container">
+   <div class="row-fluid">
+      <div class="span12 padding">
+        <%= form_tag("/buylease", :method => "PUT") do %>
+          For each brand of car the user has selected, let the user choose a type of car he would most want from that that brand (out of brands the user is interested in)
+          <input type="text" name=user[vehicle_preference] value=""><br />
+         <button class="btn btn-inverse" type="submit">Next</button>
+        <%end%>
+      </div>
+   </div>
+</div>

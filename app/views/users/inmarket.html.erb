@@ -1,0 +1,18 @@
+<div class="container">
+   <div class="row-fluid">
+      <div class="span12 padding">
+        <%= form_tag("/inmarket_save", :method => "PUT") do %>
+        Are you interested in buying a car in the next 2 months?<br><br>
+        <label class="radio">
+         <input type="radio" name="user[buy_car]" value="yes">
+          Yes
+        </label>
+        <label class="radio">
+           <input type="radio" name="user[buy_car']" value="no" checked>
+          No
+        </label>
+         <button class="btn btn-inverse" type="submit">Next</button>
+        <%end%>
+      </div>
+   </div>
+</div>

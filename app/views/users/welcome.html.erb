@@ -1,0 +1,18 @@
+<div class="container">
+   <div class="row-fluid">
+      <div class="span12 padding">
+Welcome To Saberespoder's Automotive Survey. Earn 5 Dollars If You Qualify. <br />
+This Survey Will Take About 20 Minutes If You Qualify And No More Than 2 Minutes If You Don't. To Continue Press Continue.
+<%if !@user_info.address1.nil?%>
+<a href="question2">Continue</a>
+<%else%>
+  <a href="question3">Continue</a>
+<%end%>
+      </div>
+   </div>
+</div>
+<script>
+  setTimeout(function(){
+                        window.location.href = <%if !@user_info.address1.nil?%>'/question2'<%else%>'/question3'<%end%>;
+                        },5000);
+</script>

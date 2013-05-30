@@ -1,0 +1,14 @@
+<div class="container">
+   <div class="row-fluid">
+      <div class="span12 padding">
+         <%= form_tag("/question4", :method => "PUT") do %>
+         <!--form class="form-signin" action="question4" method="put" name="sfrm" id="sfrm"-->
+          Please indiquate the mailing address you want the cash to be sent to<br/> <br/>
+         Address  &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="user[address1]" value="" ><br/><br/>
+         Address 2 &nbsp;<input type="text" name="user[address2]" value="" ><br/><br/>
+         Zipcode   &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="user[zipcode]" value="" ><br/><br/>
+         <button class="btn btn-inverse" type="submit">Next</button>
+         <%end%>
+      </div>
+   </div>
+</div>

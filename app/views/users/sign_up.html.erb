@@ -1,0 +1,159 @@
+<style>
+  
+        body {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-color: #f5f5f5;
+      }
+
+      .form-signin {
+        max-width: 400px;
+        padding: 19px 29px 29px;
+        margin: 0 auto 20px;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        -webkit-border-radius: 5px;
+           -moz-border-radius: 5px;
+                border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                box-shadow: 0 1px 2px rgba(0,0,0,.05);
+      }
+      .form-signin .form-signin-heading,
+      .form-signin .checkbox {
+        margin-bottom: 10px;
+      }
+      .form-signin input[type="text"],
+      .form-signin input[type="password"] {
+        font-size: 16px;
+        height: auto;
+        margin-bottom: 15px;
+        padding: 7px 9px;
+      }
+      
+</style>
+
+<div class="container">
+<% if flash[:msg]%>
+<div class="alert alert-error">
+      <button type="button" class="close" data-dismiss="alert">x</button>
+      <strong></strong><%=flash[:msg]%>
+</div>
+<%end%>
+<div id="msg"></div>
+  <form class="form-signin" action="sign_up_act" method="post" name="sfrm" id="sfrm">
+    <h2 class="form-signin-heading">Please Sign Up</h2>
+    Name<input type="text" class="input-block-level" placeholder="Name" id="name" name="user[name]">
+    Address<input type="text" class="input-block-level" placeholder="Address" id="address1" name="user[address1]">
+    Address 2<input type="text" class="input-block-level" placeholder="Address 2" id="address2" name="user[address2]">
+    Zip Code<input type="text" class="input-block-level" placeholder="Zip Code" id="zipcode" name="user[zipcode]">
+    DOB<input type="text" class="input-block-level" placeholder="Date Of Birth" id="dob" name="user[dob]">
+    Email<input type="text" class="input-block-level" placeholder="Email address" id="email" name="user[email]">
+    Password<input type="password" class="input-block-level" placeholder="Password" id="pswd" name="user[password]">
+    Confirm Password<input type="password" class="input-block-level" placeholder="Confirm Password" id="cpswd" name="cpswd">
+    Maritial Status <br />
+            <label class="radio">
+              <input type="radio" name="user[mstatus]" value="0" checked>
+              Single
+            </label>
+            <label class="radio">
+              <input type="radio" name="user[mstatus]" value="1" > 
+              Married
+            </label>
+            <label class="radio">
+              <input type="radio" name="user[mstatus]" value="2">
+              Divorced
+            </label>
+            <label class="radio">
+              <input type="radio" name="user[mstatus]" value="3" >
+              Widowed
+            </label>
+    <!--label class="checkbox">
+      <input type="checkbox" value="remember-me"> Remember me
+    </label-->
+    <button class="btn btn-large btn-primary" type="button" onclick="return frmsub(document.sfrm);">Sign Up</button><br /><br />
+     <a href="/">Sign in</a>
+  </form>
+
+</div>
+<script>
+        var cemail = "";
+  function frmsub(frm){
+        var emailRegex = new RegExp(/^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$/i);
+        var valid = emailRegex.test($('#email').val());
+
+    if ($("#name").val() == "") {
+      $("#msg").html('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">x</button><strong>Please Your enter Name</strong></div>');
+        $('#name').focus();
+      return false;
+    }
+    if ($("#address1").val() == "") {
+      $("#msg").html('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">x</button><strong>Please Your enter Address</strong></div>');
+      $("#address1").focus();
+      return false;
+    }
+    if ($("#zipcode").val() == "") {
+      $("#msg").html('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">x</button><strong>Please Your enter Zipcode</strong></div>');
+      $("#zipcode").focus();
+      return false;
+    }
+    if ($("#dob").val() == "") {
+      $("#msg").html('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">x</button><strong>Please Your enter DOB</strong></div>');
+      $("#dob").focus();
+      return false;
+    }
+    
+
+    if ($("#email").val() == "") {
+      $("#msg").html('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">x</button><strong>Please Your enter Email</strong></div>');
+      $("#email").focus();
+      return false;
+    }
+    if (!valid){
+      $("#msg").html('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">x</button><strong>Please Enter A Valid Email Address</strong></div>');
+      $("#email").focus();
+      return false;
+
+    }
+        if ($('#email').val() != ""){
+            $.ajax({
+                  type: "POST",
+                  url: "checkmail",
+                  data: { email: $("#email").val() }
+                  }).done(function( msg ) {
+                        if (msg == 'exist'){
+                         $("#msg").html('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">x</button><strong>Email is already Exist.</strong></div>');
+                         $("#email").focus();
+                         return false;
+                        }
+                  });
+        }
+    if ($("#pswd").val() == "") {
+      $("#msg").html('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">x</button><strong>Please Your enter Password</strong></div>');
+      $("#pswd").focus();
+      return false;
+    }
+    if ($("#cpswd").val() == "") {
+      $("#msg").html('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">x</button><strong>Please Your enter Confirm Password</strong></div>');
+      $("#cpswd").focus();
+      return false;
+    }
+    //alert($("#pswd").val() +'===='+ $("#cpswd").val());
+    if ($("#pswd").val().to_s != $("#cpswd").val().to_s) {
+      $("#msg").html('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">x</button><strong>Please Your enter correct Confirm Password</strong></div>');
+      $("#cpswd").focus();
+      return false;
+    }
+    
+    sfrm.submit();
+    return true;
+  }
+</script>
+<script>
+$(function() {
+   $('#dob').datepicker({format: 'yyyy-mm-dd'})
+   .on('changeDate', function(ev){
+        $('#dob').datepicker('hide');
+   });
+ });
+</script>

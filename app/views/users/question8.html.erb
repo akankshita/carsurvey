@@ -1,0 +1,29 @@
+<div class="container">
+   <div class="row-fluid">
+      <div class="span12 padding">
+         <%= form_tag("/question9", :method => "PUT") do %>
+        Ask for martial status ?<br/><br/>
+            <label class="radio">
+              <input type="radio" name="user[mstatus]" value="0" checked>
+              Single
+            </label>
+            <label class="radio">
+              <input type="radio" name="user[mstatus]" value="1" checked>
+              Married
+            </label>
+            <label class="radio">
+              <input type="radio" name="user[mstatus]" value="2" checked>
+              Divorced
+            </label>
+            <label class="radio">
+             <input type="radio" name="user[mstatus]" value="3" checked>
+              Widowed
+            </label>
+        No Of Kids
+        <%= select(:user,:kid, ((0..10).collect{|kid| [kid]}).uniq) %><br/><br/>
+     
+        <button class="btn btn-inverse" type="submit">Next</button>
+        <%end%>
+      </div>
+   </div>
+</div>

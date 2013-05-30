@@ -1,0 +1,12 @@
+<div class="container">
+   <div class="row-fluid">
+      <div class="span12 padding">
+         <%= form_tag("/brandinterest", :method => "PUT") do %>
+          <% (1..@kidno).each do |i| %>
+           Kid <%=i%>  &nbsp;<br/> Gender<input type="text" name="user[gender]" value="" > &nbsp; Age<input type="text" name="user[age]" value="" ><br/><br/>
+          <% end %><br/><br/>
+           <button class="btn btn-inverse" type="submit">Next</button>
+         <%end%>
+      </div>
+   </div>
+</div>

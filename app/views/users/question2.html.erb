@@ -1,0 +1,18 @@
+<div class="container">
+   <div class="row-fluid">
+      <div class="span12 padding">
+         <%= form_tag("/question3", :method => "PUT") do %>
+            Do you want your prize sent to <b><%=@address%></b>?<br/>
+            <label class="radio">
+              <input type="radio" name="user[prize]" value="yes" checked>
+              Yes
+            </label>
+            <label class="radio">
+              <input type="radio" name="user[prize]" value="no" checked>
+              No
+            </label>
+            <button class="btn btn-inverse" type="submit">Next</button>
+        <%end%>
+      </div>
+   </div>
+</div>

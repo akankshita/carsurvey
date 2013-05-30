@@ -1,0 +1,42 @@
+<div class="container">
+   <div class="row-fluid">
+      <div class="span12 padding">
+        <%= form_tag("/vehicleinterest_save", :method => "PUT") do %>
+        What kind of a car are you most interested in buying?<br><br>
+        <label class="checkbox">
+          <input type="checkbox" name="user[vehicle][]" value="SUV">
+          SUV
+        </label>        
+        <label class="checkbox">
+           <input type="checkbox" name="user[vehicle][]" value="4-door">
+          4-door
+        </label>        
+        <label class="checkbox">
+          <input type="checkbox" name="user[vehicle][]" value="2-door">
+          2-door
+        </label>        
+        <label class="checkbox">
+          <input type="checkbox" name="user[vehicle][]" value="sports car">
+          Sports car
+        </label>        
+        <label class="checkbox">
+           <input type="checkbox" name="user[vehicle][]" value="electric car">
+          Electric car
+        </label>        
+        <label class="checkbox">
+          <input type="checkbox" name="user[vehicle][]" value="Jeep">
+         Jeep
+        </label>        
+        <label class="checkbox">
+          <input type="checkbox" name="user[vehicle][]" value="Truck"> 
+         Truck
+        </label>        
+        <label class="checkbox">
+           <input type="checkbox" name="user[vehicle][]" value="Other">
+          Other
+        </label>        
+         <button class="btn btn-inverse" type="submit">Next</button>
+        <%end%>
+      </div>
+   </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="container">
+   <div class="row-fluid">
+      <div class="span12 padding">
+       <%= form_tag("/question7", :method => "PUT") do %>
+        Please set your birth year  ? <br/>
+        <%= select(:user,:year, ((1900..Time.now.year).collect{|year| [year]}).uniq) %><br/><br/>
+        <button class="btn btn-inverse" type="submit">Next</button>
+        <%end%>
+      </div>
+   </div>
+</div>
